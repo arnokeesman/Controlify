@@ -30,7 +30,9 @@ public final class SnapUtils {
             }
 
             RecipeBookPageAccessor pageAccessor = (RecipeBookPageAccessor) componentAccessor.getRecipeBookPage();
-            pageAccessor.getButtons().forEach(button -> {
+            pageAccessor.getButtons().stream()
+                    .filter(button -> button.visible && button.active)
+                    .forEach(button -> {
                 int x = button.getX() + button.getWidth() / 2;
                 int y = button.getY() + button.getHeight() / 2;
                 points.add(new SnapPoint(new Vector2i(x, y), 21));
