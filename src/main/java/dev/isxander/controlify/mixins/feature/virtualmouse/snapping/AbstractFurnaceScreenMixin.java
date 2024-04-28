@@ -25,6 +25,7 @@ public abstract class AbstractFurnaceScreenMixin<T extends AbstractFurnaceMenu> 
     public Set<SnapPoint> getSnapPoints() {
         Set<SnapPoint> points = new HashSet<>(super.getSnapPoints());
         SnapUtils.addRecipeSnapPoints(recipeBookComponent, points);
+        points.add(new SnapPoint(leftPos + 20 + (20 / 2), height / 2 - 49 + (18 / 2), 20));
         return points;
     }
 }

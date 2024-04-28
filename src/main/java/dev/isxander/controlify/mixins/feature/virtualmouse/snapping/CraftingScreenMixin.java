@@ -15,7 +15,9 @@ import java.util.Set;
 
 @Mixin(CraftingScreen.class)
 public abstract class CraftingScreenMixin extends AbstractContainerScreenMixin<CraftingMenu> {
-    @Shadow @Final private RecipeBookComponent recipeBookComponent;
+    @Shadow
+    @Final
+    private RecipeBookComponent recipeBookComponent;
 
     protected CraftingScreenMixin(Component title) {
         super(title);
@@ -25,6 +27,7 @@ public abstract class CraftingScreenMixin extends AbstractContainerScreenMixin<C
     public Set<SnapPoint> getSnapPoints() {
         Set<SnapPoint> points = new HashSet<>(super.getSnapPoints());
         SnapUtils.addRecipeSnapPoints(recipeBookComponent, points);
+        points.add(new SnapPoint(leftPos + 5 + (20 / 2), height / 2 - 49 + (18 / 2), 20));
         return points;
     }
 }
