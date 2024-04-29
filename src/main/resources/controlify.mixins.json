@@ -115,6 +115,7 @@
     "feature.virtualmouse.snapping.CraftingScreenMixin",
     "feature.virtualmouse.snapping.CreativeModeInventoryScreenMixin",
     "feature.virtualmouse.snapping.InventoryScreenMixin",
+    "feature.virtualmouse.snapping.LoomScreenMixin",
     "feature.virtualmouse.snapping.RecipeBookComponentAccessor",
     "feature.virtualmouse.snapping.RecipeBookPageAccessor",
     "feature.virtualmouse.snapping.ScreenMixin",

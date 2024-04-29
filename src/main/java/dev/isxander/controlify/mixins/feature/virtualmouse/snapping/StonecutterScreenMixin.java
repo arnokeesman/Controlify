@@ -1,6 +1,7 @@
 package dev.isxander.controlify.mixins.feature.virtualmouse.snapping;
 
 import dev.isxander.controlify.api.vmousesnapping.SnapPoint;
+import dev.isxander.controlify.virtualmouse.SnapUtils;
 import net.minecraft.client.gui.screens.inventory.StonecutterScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.StonecutterMenu;
@@ -28,17 +29,24 @@ public abstract class StonecutterScreenMixin extends AbstractContainerScreenMixi
     @Override
     public Set<SnapPoint> getSnapPoints() {
         Set<SnapPoint> points = new HashSet<>(super.getSnapPoints());
+
         int recipeAreaStartX = this.leftPos + RECIPES_X;
         int recipeAreaStartY = this.topPos + RECIPES_Y;
-        int recipeCountLimit = this.startIndex + RECIPES_ROWS * RECIPES_COLUMNS;
+        int itemCount = this.menu.getNumRecipes();
 
-        for (int i = this.startIndex; i < recipeCountLimit && i < this.menu.getNumRecipes(); ++i) {
-            int locationNumber = i - this.startIndex;
-            int buttonXPos = recipeAreaStartX + locationNumber % RECIPES_COLUMNS * RECIPES_IMAGE_SIZE_WIDTH;
-            int row = locationNumber / RECIPES_COLUMNS;
-            int buttonYPos = recipeAreaStartY + row * RECIPES_IMAGE_SIZE_HEIGHT;
-            points.add(new SnapPoint(buttonXPos + RECIPES_IMAGE_SIZE_WIDTH / 2, buttonYPos + RECIPES_IMAGE_SIZE_HEIGHT / 2 + 1, 16));
-        }
+        SnapUtils.addSnapPointsFromRowsAndColumns(
+                recipeAreaStartX,
+                recipeAreaStartY,
+                startIndex,
+                RECIPES_ROWS,
+                RECIPES_COLUMNS,
+                RECIPES_IMAGE_SIZE_WIDTH,
+                RECIPES_IMAGE_SIZE_HEIGHT,
+                -1,
+                1,
+                itemCount,
+                points
+        );
 
         return points;
     }

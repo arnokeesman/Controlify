@@ -33,10 +33,10 @@ public final class SnapUtils {
             pageAccessor.getButtons().stream()
                     .filter(button -> button.visible && button.active)
                     .forEach(button -> {
-                int x = button.getX() + button.getWidth() / 2;
-                int y = button.getY() + button.getHeight() / 2;
-                points.add(new SnapPoint(new Vector2i(x, y), 21));
-            });
+                        int x = button.getX() + button.getWidth() / 2;
+                        int y = button.getY() + button.getHeight() / 2;
+                        points.add(new SnapPoint(new Vector2i(x, y), 21));
+                    });
 
             StateSwitchingButton forwardButton = pageAccessor.getForwardButton();
             if (forwardButton.visible) {
@@ -51,6 +51,33 @@ public final class SnapUtils {
                 int y = backButton.getY() + backButton.getHeight() / 2;
                 points.add(new SnapPoint(new Vector2i(x, y), 10));
             }
+        }
+    }
+
+    public static void addSnapPointsFromRowsAndColumns(
+            int startX,
+            int startY,
+            int startIndex,
+            int rows,
+            int columns,
+            int tileWidth,
+            int tileHeight,
+            int cursorOffsetX,
+            int cursorOffsetY,
+            int itemCount,
+            Collection<SnapPoint> points
+    ) {
+        int availableSlotsOnScreen = startIndex + rows * columns;
+
+        for (int i = startIndex; i < availableSlotsOnScreen && i < itemCount; ++i) {
+            int locationNumber = i - startIndex;
+            int buttonXPos = startX + locationNumber % columns * tileWidth;
+            int row = locationNumber / columns;
+            int buttonYPos = startY + row * tileHeight;
+            points.add(new SnapPoint(
+                    buttonXPos + tileHeight / 2 + cursorOffsetX,
+                    buttonYPos + tileHeight / 2 + cursorOffsetY,
+                    Math.min(tileWidth, tileHeight)));
         }
     }
 }
