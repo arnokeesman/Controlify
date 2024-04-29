@@ -111,6 +111,7 @@
     "feature.virtualmouse.MouseHandlerMixin",
     "feature.virtualmouse.snapping.AbstractContainerScreenMixin",
     "feature.virtualmouse.snapping.AbstractFurnaceScreenMixin",
+    "feature.virtualmouse.snapping.BeaconScreenMixin",
     "feature.virtualmouse.snapping.CraftingScreenMixin",
     "feature.virtualmouse.snapping.CreativeModeInventoryScreenMixin",
     "feature.virtualmouse.snapping.InventoryScreenMixin",
