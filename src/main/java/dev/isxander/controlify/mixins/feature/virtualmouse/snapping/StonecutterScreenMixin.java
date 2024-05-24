@@ -30,8 +30,8 @@ public abstract class StonecutterScreenMixin extends AbstractContainerScreenMixi
     public Set<SnapPoint> getSnapPoints() {
         Set<SnapPoint> points = new HashSet<>(super.getSnapPoints());
 
-        int recipeAreaStartX = this.leftPos + RECIPES_X;
-        int recipeAreaStartY = this.topPos + RECIPES_Y;
+        int recipeAreaStartX = this.leftPos + RECIPES_X - 1;
+        int recipeAreaStartY = this.topPos + RECIPES_Y + 1;
         int itemCount = this.menu.getNumRecipes();
 
         SnapUtils.addSnapPointsFromRowsAndColumns(
@@ -42,8 +42,6 @@ public abstract class StonecutterScreenMixin extends AbstractContainerScreenMixi
                 RECIPES_COLUMNS,
                 RECIPES_IMAGE_SIZE_WIDTH,
                 RECIPES_IMAGE_SIZE_HEIGHT,
-                -1,
-                1,
                 itemCount,
                 points
         );

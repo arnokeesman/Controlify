@@ -62,8 +62,6 @@ public final class SnapUtils {
             int columns,
             int tileWidth,
             int tileHeight,
-            int cursorOffsetX,
-            int cursorOffsetY,
             int itemCount,
             Collection<SnapPoint> points
     ) {
@@ -75,8 +73,8 @@ public final class SnapUtils {
             int row = locationNumber / columns;
             int buttonYPos = startY + row * tileHeight;
             points.add(new SnapPoint(
-                    buttonXPos + tileHeight / 2 + cursorOffsetX,
-                    buttonYPos + tileHeight / 2 + cursorOffsetY,
+                    buttonXPos + tileHeight / 2,
+                    buttonYPos + tileHeight / 2,
                     Math.min(tileWidth, tileHeight)));
         }
     }

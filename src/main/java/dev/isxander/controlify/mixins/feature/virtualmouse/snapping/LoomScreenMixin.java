@@ -42,8 +42,6 @@ public abstract class LoomScreenMixin extends AbstractContainerScreenMixin<LoomM
                 PATTERN_COLUMNS,
                 PATTERN_IMAGE_SIZE,
                 PATTERN_IMAGE_SIZE,
-                0,
-                0,
                 itemCount,
                 points
         );
